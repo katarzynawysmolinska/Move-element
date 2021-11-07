@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div{
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background-color: black;
+}
+
+    </style>
+</head>
+<body>
+    <div></div>
+    
+
+    <script>
+
+const div = document.querySelector('div');
+
+console.log(div.offsetTop)
+console.log(div.offsetLeft)
+
+div.style.top =  "50%"
+div.style.left=  "50%"
+
+console.log(div.offsetTop)
+console.log(div.offsetLeft)
+
+div.style.transform = 'translate(-50%,-50%)'
+
+console.log(div.offsetTop)
+console.log(div.offsetLeft)
+
+
+const mouseDown= (e) => {
+
+div.style.backgroundColor= 'grey'
+
+div.addEventListener('mousemove', mouseMove)
+
+// console.log(div.offsetTop -100)
+// console.log(div.offsetLeft - 100)
+
+
+
+
+}
+
+
+const mouseMove = (e) => {
+
+const clickedX = e.clientX - (div.offsetLeft - 100);
+console.log(clickedX)
+const clickedY = e.clientY - (div.offsetTop - 100);
+console.log(clickedY)
+
+
+
+    if(div.style.backgroundColor=='grey') {
+
+// if() // TOP Y
+
+
+
+
+div.style.top =  e.clientY +"px";
+div.style.left=  e.clientX +"px";
+console.log('move')
+
+    }
+}
+
+
+const mouseUp = (e) => {
+    div.style.backgroundColor = 'black';
+}
+
+
+div.addEventListener('mouseup', mouseUp)
+div.addEventListener('mousedown', mouseDown);
+
+
+    </script>
+</body>
+</html>
